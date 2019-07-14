@@ -16,6 +16,19 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`jantent` /*!40100 DEFAULT CHARACTER SET
 
 USE `jantent`;
 
+/*Table structure for table `student` */
+
+DROP TABLE IF EXISTS `student`;
+
+CREATE TABLE `student` (
+  `id` char(5) DEFAULT NULL,
+  `name` char(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `student` */
+
+insert  into `student`(`id`,`name`) values ('1','张三'),('2','李四'),('3','老李');
+
 /*Table structure for table `t_attach` */
 
 DROP TABLE IF EXISTS `t_attach`;
@@ -91,7 +104,7 @@ CREATE TABLE `t_contents` (
 
 /*Data for the table `t_contents` */
 
-insert  into `t_contents`(`cid`,`title`,`slug`,`created`,`modified`,`content`,`author_id`,`type`,`status`,`tags`,`categories`,`thumbImg`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`) values (1,'这是测试','my-sdfs-sfs',1562921894,1562921894,'2313123123123131322123131313',1,'post','publish','这是测试','文章','',1,1,1,1,1),(11,'这是测试222','sfdsfsfssfds',1562922055,1562922055,'这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222',1,'post','publish','这是测试222','文章','/upload/2019/07/oke4poevhugl4qq8o4e31qpbhd.png',2,0,1,0,0),(21,'测试','34424242423423',1563027952,1563027952,'234234234242423',1,'post','publish','测试','默认分类','/upload/2019/07/7q7i840qd6hj5qmtmps1g0u3r3.png',0,0,1,1,1);
+insert  into `t_contents`(`cid`,`title`,`slug`,`created`,`modified`,`content`,`author_id`,`type`,`status`,`tags`,`categories`,`thumbImg`,`hits`,`comments_num`,`allow_comment`,`allow_ping`,`allow_feed`) values (1,'这是测试','my-sdfs-sfs',1562921894,1562921894,'2313123123123131322123131313',1,'post','publish','这是测试','文章','',2,1,1,1,1),(11,'这是测试222','sfdsfsfssfds',1562922055,1562922055,'这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222这是测试222',1,'post','publish','这是测试222','文章','/upload/2019/07/oke4poevhugl4qq8o4e31qpbhd.png',2,0,1,0,0),(21,'测试','34424242423423',1563027952,1563027952,'234234234242423',1,'post','publish','测试','默认分类','/upload/2019/07/7q7i840qd6hj5qmtmps1g0u3r3.png',0,0,1,1,1);
 
 /*Table structure for table `t_logs` */
 
@@ -105,11 +118,11 @@ CREATE TABLE `t_logs` (
   `ip` varchar(20) DEFAULT NULL,
   `created` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_logs` */
 
-insert  into `t_logs`(`id`,`action`,`data`,`author_id`,`ip`,`created`) values (1,'登录后台',NULL,1,'127.0.0.1',1562921006),(11,'登录后台',NULL,1,'127.0.0.1',1562922249),(21,'登录后台',NULL,1,'0:0:0:0:0:0:0:1',1563027820);
+insert  into `t_logs`(`id`,`action`,`data`,`author_id`,`ip`,`created`) values (1,'登录后台',NULL,1,'127.0.0.1',1562921006),(11,'登录后台',NULL,1,'127.0.0.1',1562922249),(21,'登录后台',NULL,1,'0:0:0:0:0:0:0:1',1563027820),(31,'登录后台',NULL,1,'127.0.0.1',1563089655);
 
 /*Table structure for table `t_metas` */
 
@@ -183,6 +196,23 @@ CREATE TABLE `t_users` (
 /*Data for the table `t_users` */
 
 insert  into `t_users`(`uid`,`username`,`password`,`email`,`home_url`,`screen_name`,`created`,`activated`,`logged`,`group_name`) values (1,'admin','a66abb5684c45962d887564f08346e8d','jantent@qq.com',NULL,'admin',1490756162,0,0,'visitor');
+
+/*Table structure for table `u_user` */
+
+DROP TABLE IF EXISTS `u_user`;
+
+CREATE TABLE `u_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nick` varchar(50) DEFAULT NULL,
+  `phone` varchar(18) DEFAULT NULL,
+  `address` varchar(150) DEFAULT NULL,
+  `email` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+/*Data for the table `u_user` */
+
+insert  into `u_user`(`id`,`nick`,`phone`,`address`,`email`) values (7,'nick300','13900000000','北京海淀中关村','quetyj@163.com'),(8,'zhangsanfeng001','1370000000','13e124','127490808@qq.com'),(9,'zhangsanfeng001','1370000000','13e124','127490808@qq.com'),(10,'zhangsanfeng001','1370000000','13e124','127490808@qq.com'),(11,'zhangsanfeng001','1370000000','13e124','127490808@qq.com'),(21,'张三','1231322321','上海','444@qq.com'),(31,'121','1321313','1231','13213');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
