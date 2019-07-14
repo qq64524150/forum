@@ -69,6 +69,7 @@ public class IndexController extends AbstractController {
      */
     @GetMapping(value = "/")
     private String index(HttpServletRequest request, @RequestParam(value = "limit", defaultValue = "10") int limit) {
+
         return this.index(request, 1, limit);
     }
 

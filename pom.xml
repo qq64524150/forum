@@ -13,14 +13,31 @@
         <thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
         <thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
     </properties>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--这是新加的配置-->
+                <configuration>
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                </configuration>
             </plugin>
+            <!-- 这是代码自动生成-->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <configuration>
+                    <configurationFile>GeneratorMapper.xml</configurationFile>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+            </plugin>
+
+
         </plugins>
     </build>
 
@@ -85,6 +102,9 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
+
+
+
 
         <!-- mybatis-->
 
@@ -151,6 +171,11 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
+        <!--actuator监控检查的依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.tomcat</groupId>
@@ -159,6 +184,18 @@
             <scope>provided</scope>
         </dependency>
 
+
+        <!--添加Lombok插件-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.google-collections</groupId>
+            <artifactId>google-collect</artifactId>
+            <version>snapshot-20080530</version>
+        </dependency>
 
     </dependencies>
 

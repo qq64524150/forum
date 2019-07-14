@@ -41,7 +41,8 @@ public class ScheduleTask {
             result.append(" 操作: ").append(logVo.getAction());
             result.append(" IP： ").append(logVo.getIp()).append("\n");
         }
-        mailService.sendSimpleEmail(mailTo,"博客系统运行情况",result.toString());
+        //这是发送邮件
+       // mailService.sendSimpleEmail(mailTo,"系统运行情况",result.toString());
     }
 
     public static String getMemery() {

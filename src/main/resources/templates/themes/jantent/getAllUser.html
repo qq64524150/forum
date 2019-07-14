@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${mo.titl}">Title</title>
+</head>
+<body>
+    <a th:href="@{/from}">添加</a>
+    <h1 th:text="${mo.titl}"></h1>
+
+    <table>
+
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>用户</td>
+                <td>手机</td>
+                <td>地址</td>
+                <td>邮件</td>
+                <td>操作</td>
+            </tr>
+
+        </thead>
+
+        <tbody>
+            <tr th:if="${mo.userlist.size()>0} ">
+                <td colspan="6" > 没有数据11</td>
+
+            </tr>
+        <tr th:each="user:${mo.userlist}" th:if="${mo.userlist.size()!=0}">
+
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.nick}"></td>
+            <td th:text="${user.phone}"></td>
+            <td th:text="${user.address}"></td>
+            <td th:text="${user.email}"></td>
+            <td >
+                <a th:href="@{'del/'+${user.id}}">删除</a>
+                <a th:href="@{'upd/'+${user.id}}">修改</a>
+            </td>
+
+
+        </tr>
+        </tbody>
+
+    </table>
+
+</body>
+</html>
