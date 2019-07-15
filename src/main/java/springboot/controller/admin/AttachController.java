@@ -74,6 +74,7 @@ public class AttachController extends AbstractController {
      * @param multipartFiles
      * @return
      * @throws IOException
+     * 图片上传
      */
     @PostMapping(value = "upload")
     @ResponseBody

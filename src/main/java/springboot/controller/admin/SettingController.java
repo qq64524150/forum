@@ -52,6 +52,7 @@ public class SettingController extends AbstractController {
      */
     @GetMapping(value = "")
     public String index(HttpServletRequest request) {
+        logger.info("设置点击了");
         List<OptionVo> volist = optionService.getOptions();
         Map<String, String> options = new HashMap<>();
         volist.forEach((option) -> {
@@ -60,7 +61,13 @@ public class SettingController extends AbstractController {
         if (options.get("site_record") == null) {
             options.put("site_record", "");
         }
+        for(String key:options.keySet()){//keySet获取map集合key的集合  然后在遍历key即可
+            String value = options.get(key).toString();//
+            logger.info("key:"+key+" vlaue:"+value);
+        }
+
         request.setAttribute("options", options);
+
         return "admin/setting";
     }
 

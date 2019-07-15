@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="title='系统设置',active='settings'">
+<html lang="en" th:with="title='系统设置',active='settings'" xmlns:th="http://www.thymeleaf.org">
 <header th:replace="admin/header::headerFragment(${title},${active})"></header>
-<link th:href="@{/admin/plugins/toggles/toggles.css}" rel="stylesheet"/>
+<link rel="stylesheet" th:href="@{/admin/plugins/toggles/toggles.css}"/>
 <body class="fixed-left">
 <div id="wrapper">
     <div th:replace="admin/header::header-body"></div>
@@ -18,40 +18,41 @@
                                 <h3 class="panel-title">全局设置</h3>
                             </div>
                             <div class="panel-body">
-                                <form class="form-horizontal" role="form" id="global-form">
+                                <form class="form-horizontal" id="global-form" role="form">
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">站点名称</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="site_title" placeholder="站点名称"
-                                                   th:value="${options.site_title}" required="required" aria-required="true"/>
+                                            <input aria-required="true" class="form-control" name="site_title" placeholder="站点名称"
+                                                   required="required" th:value="${options.site_title}" type="text"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">站点描述</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="site_description" placeholder="站点描述"
-                                                   th:value="${options.site_description}" required="required" aria-required="true"/>
+                                            <input aria-required="true" class="form-control" name="site_description" placeholder="站点描述"
+                                                   required="required" th:value="${options.site_description}" type="text"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">ICP备案号</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="site_record" placeholder="ICP备案号"
-                                                   th:value="${options.site_record}" required="required" aria-required="true"/>
+                                            <input aria-required="true" class="form-control" name="site_record" placeholder="ICP备案号"
+                                                   required="required" th:value="${options.site_record}" type="text"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">博客主题</label>
                                         <div class="col-md-9">
-                                            <select name="site_theme" class="form-control">
-                                                <option value="default" th:selected="${options.site_theme=='default'}?true:false">默认主题</option>
+                                            <select class="form-control" name="site_theme">
+                                                <option th:selected="${options.site_theme=='default'}?true:false" value="default">默认主题</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="allow_install" id="allow_install"/>
+
+                                    <input id="allow_install" name="allow_install" type="hidden"/>
                                     <div class="clearfix pull-right">
-                                        <button type="button" class="btn btn-primary waves-effect waves-light" onclick="saveSetting()">
+                                        <button class="btn btn-primary waves-effect waves-light" onclick="saveSetting()" type="button">
                                             保存设置
                                         </button>
                                     </div>
@@ -66,24 +67,24 @@
                                 <h3 class="panel-title">高级选项设置</h3>
                             </div>
                             <div class="panel-body">
-                                <form class="form-horizontal" role="form" id="advanced-form">
+                                <form class="form-horizontal" id="advanced-form" role="form">
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">清理缓存</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="cache_key" placeholder="请输入缓存前缀，输入*删除所有缓存"/>
+                                            <input class="form-control" name="cache_key" placeholder="请输入缓存前缀，输入*删除所有缓存" type="text"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">黑名单IP列表</label>
                                         <div class="col-md-9">
-                           <textarea class="form-control" name="block_ips" rows="3"
-                                      placeholder="请输入黑名单IP，如：123.123.33.23,123.123.33.24" th:text="${options.site_block_ips}"></textarea>
+                            <textarea class="form-control" name="block_ips" placeholder="请输入黑名单IP，如：123.123.33.23,123.123.33.24"
+                                      rows="3" th:text="${options.site_block_ips}"></textarea>
                                         </div>
                                     </div>
 
                                     <div class="clearfix pull-right">
-                                        <button type="button" class="btn btn-primary waves-effect waves-light" onclick="saveAdvanced()">
+                                        <button class="btn btn-primary waves-effect waves-light" onclick="saveAdvanced()" type="button">
                                             保存设置
                                         </button>
                                     </div>

@@ -13,7 +13,7 @@
         <thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
         <thymeleaf-layout-dialect.version>2.0.0</thymeleaf-layout-dialect.version>
     </properties>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <build>
         <plugins>
@@ -183,7 +183,12 @@
             <version>8.0.36</version>
             <scope>provided</scope>
         </dependency>
-
+        <!--打包war修改用-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
         <!--添加Lombok插件-->
         <dependency>

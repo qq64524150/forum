@@ -4,8 +4,10 @@
 <link th:href="@{/admin/plugins/toggles/toggles.css}" rel="stylesheet"/>
 <link th:href="@{/admin/plugins/md/css/style.css}" rel="stylesheet"/>
 <body class="fixed-left">
+
 <div id="wrapper">
     <div th:replace="admin/header::header-body"></div>
+
     <div class="content-page">
         <div class="content">
             <div class="container">
@@ -48,7 +50,12 @@
                         </form>
                     </div>
 
+
+
+
                 </div>
+
+              <!--  <div th:replace="admin/attach :: imgUplod-content"></div>-->
                 <div th:replace="admin/footer :: footer-content"></div>
             </div>
         </div>
@@ -65,7 +72,17 @@
 <script th:src="@{//cdn.bootcss.com/jquery-validate/1.15.1/jquery.validate.min.js}"></script>
 <script th:src="@{//cdn.bootcss.com/jquery-validate/1.15.1/localization/messages_zh.min.js}"></script>
 <script type="text/javascript">
-    /*<![CDATA[*/
+
+
+        function myfun() 　　{
+            alert("this window.onload");
+        }
+        /*用window.onload调用myfun()*/
+
+        // 不要括号
+        window.onload = myfun;
+
+
     var tale = new $.tale();
     // validate the comment form when it is submitted
     $('#articleForm').validate({
